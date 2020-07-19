@@ -1,0 +1,127 @@
+{
+    "info": {
+      "title": "",
+      "description": "",
+      "version": "",
+      "x-ISC_Namespace": "USER"
+    },
+    "basePath": "/crud2",
+    "paths": {
+      "/person/all": {
+        "get": {
+          "operationId": "GetAllPerson",
+          "x-ISC_ServiceMethod": "GetAllPerson",
+          "x-ISC_CORS": true,
+          "responses": {
+            "200": {
+              "description": "(Expected Result)"
+            },
+            "default": {
+              "description": "(Unexpected Error)"
+            }
+          }
+        }
+      },
+      "/person/{id}": {
+        "get": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "operationId": "GetPerson",
+          "x-ISC_ServiceMethod": "GetPerson",
+          "x-ISC_CORS": true,
+          "responses": {
+            "200": {
+              "description": "(Expected Result)"
+            },
+            "default": {
+              "description": "(Unexpected Error)"
+            }
+          }
+        },
+        "put": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "payloadBody",
+              "in": "body",
+              "description": "Request body contents",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "operationId": "UpdatePerson",
+          "x-ISC_ServiceMethod": "UpdatePerson",
+          "x-ISC_CORS": true,
+          "responses": {
+            "200": {
+              "description": "(Expected Result)"
+            },
+            "default": {
+              "description": "(Unexpected Error)"
+            }
+          }
+        },
+        "delete": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "operationId": "DeletePerson",
+          "x-ISC_ServiceMethod": "DeletePerson",
+          "x-ISC_CORS": true,
+          "responses": {
+            "200": {
+              "description": "(Expected Result)"
+            },
+            "default": {
+              "description": "(Unexpected Error)"
+            }
+          }
+        }
+      },
+      "/person": {
+        "post": {
+          "parameters": [
+            {
+              "name": "payloadBody",
+              "in": "body",
+              "description": "Request body contents",
+              "required": false,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "operationId": "CreatePerson",
+          "x-ISC_ServiceMethod": "CreatePerson",
+          "x-ISC_CORS": true,
+          "responses": {
+            "200": {
+              "description": "(Expected Result)"
+            },
+            "default": {
+              "description": "(Unexpected Error)"
+            }
+          }
+        }
+      }
+    },
+    "swagger": "2.0"
+  }
