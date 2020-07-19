@@ -31,7 +31,7 @@ IRIS サーバ側でのJSON操作に使用するダイナミックオブジェ�
 ||[Test.JSONTest](/Test/JSONTest.cls)|ビデオ：(2) [IRIS での JSON 操作]()の中で実行するJSON用SQL関数のサンプルコードを含んだクラス定義|
 ||[Test.VSCode.REST](/Test/VSCode/REST.cls)|(3) [手動によるディスパッチクラスの作成]（）で作成するRESTディスパッチクラスのサンプルコード|
 ||[crud2-sample.json](/crud2-sample.json)|(4) [API ファーストで作成するディスパッチクラス]（）で事前に準備するOpenAPI2.0に基づくアプリケーション定義例|
-||[impl-sample.cls]](/impl-sample.cls)|(4) [API ファーストで作成するディスパッチクラス]（）でロジックを記述するクラス（自動生成されるクラスにサンプルコードを記載したファイルです）|
+||[impl-sample.cls](/impl-sample.cls)|(4) [API ファーストで作成するディスパッチクラス]（）でロジックを記述するクラス（自動生成されるクラスにサンプルコードを記載したファイルです）|
 
 
 ## コンテナ起動までの手順
@@ -59,8 +59,10 @@ $ docker-compose stop
 
 ## 手動による REST ディスパッチクラスの作成と実行体験する
 コンテナ開始時に /crudSample　のベースURLに対して、[Test.VSCode.REST](/Test/VSCode/REST.cls)が実行できる環境を作成します。
+
 GET／POST／PUT／DELETE 要求をお好みのRESTクライアントから実行できます。
 テスト実行時のベースURLは http://localhost:42773/crudSample です。それぞれの要求に合わせてパスを修正して実行してください。
+
 例）Test.Personを全件返すGET要求実行パス　http://localhost:42773/crudSample/person/all
 
 また、コンテナに事前に用意されるベースURL /crudSample では、REST アクセス時に Basic 認証を使用します（認証は任意の方法に変更できますが初期設定として Basic 認証を指定しています）。
@@ -70,6 +72,7 @@ GET／POST／PUT／DELETE 要求をお好みのRESTクライアントから実�
 ## API ファーストによる RESTディスパッチクラスの作成と実行を体験する
 OpenAPI2.0に基づくアプリケーションの仕様をご準備ください。
 （サンプル： [crud2-sample.json](/crud2-sample.json) を用意しています。）
+
 JSONでアプリケーション仕様を定義した後、以下URLをPOST要求で実行します。
 （メッセージボディにJSONのアプリケーション仕様の定義を指定します）
 
@@ -79,6 +82,7 @@ http://localhost:ポート番号/api/mgmnt/v2/<ネームスペース名>/<ベー
 http://localhost:42773/api/mgmnt/v2/user/crud2
 
 実行後自動生成される　crud2.impl クラスを VSCode にエクスポートしてから、コードを追記します（設定詳細はビデオ：[API ファーストで作成するディスパッチクラス]（）xx:ss ～をご参照ください）。
+
 crud2.implクラスのサンプルは [impl-sample.cls](/impl-sample.cls) です。
 また、ベースURL /crud2 に対して設定するディスパッチクラスは crud2.disp です（管理ポータルのウェブ・アプリケーションの画面で設定します）。
 
