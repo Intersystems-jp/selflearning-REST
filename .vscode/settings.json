@@ -1,17 +1,18 @@
 {
-    
-    "objectscript": {
-      "conn": {
-        "https": false,
-        "ns": "USER",
-        "active": true,
+      
+    "objectscript.conn": {
+        "host": "localhost",
+        "port": 42773,
         "username": "_SYSTEM",
         "password": "SYS",
+        "ns": "USER",
+        "https": false,
         "docker-compose": {
-          "service": "iris",
-          "internalPort": 52773
-        }
+          "service": "",
+          "internalPort": 52773,
+          "file": "docker-compose.yml"
+        },
+        "links": {}
       }
-    }
-  
+
   }
