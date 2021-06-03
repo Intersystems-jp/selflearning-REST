@@ -1,5 +1,10 @@
 Class Test.VSCode.REST Extends %CSP.REST
 {
+Parameter CONTENTTYPE = "application/json";
+
+Parameter CHARSET = "utf-8";
+
+Parameter CONVERTINPUTSTREAM = 1;
 
 XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 {
@@ -17,8 +22,6 @@ ClassMethod DeletePerson(id As %Integer) As %Status
 {
     set status=$$$OK
     Try {
-        set %response.ContentType="application/json"
-        set %response.CharSet="utf8"
         set status=##class(Test.Person).%DeleteId(id)
 
     } Catch ex {
@@ -33,11 +36,8 @@ ClassMethod UpdatePerson(id As %Integer) As %Status
 {
     set status=$$$OK
     Try {
-        set %response.ContentType="application/json"
-        set %response.CharSet="utf8"
         set person=##class(Test.Person).%OpenId(id)
-        set data=$ZConvert(%request.Content.Read(),"I","UTF8")
-        set status=person.%JSONImport(data)
+        set status=person.%JSONImport(%request.Content.Read())
         set status=person.%Save()
 
     } Catch ex {
@@ -52,8 +52,6 @@ ClassMethod GetPerson(id As %Integer) As %Status
 {
     set status=$$$OK
     Try {
-        set %response.ContentType="application/json"
-        set %response.CharSet="utf8"
         set person=##class(Test.Person).%OpenId(id)
         do person.%JSONExport()
 
@@ -69,11 +67,8 @@ ClassMethod CreatePerson() As %Status
 {
     set status=$$$OK
     Try {
-        set %response.ContentType="application/json"
-        set %response.CharSet="utf8"
         set person=##class(Test.Person).%New()
-        set data=$ZConvert(%request.Content.Read(),"I","UTF8")
-        set status=person.%JSONImport(data)
+        set status=person.%JSONImport(%request.Content.Read())
         set status=person.%Save()
     } Catch ex {
         set status=ex.AsStatus()
@@ -87,8 +82,6 @@ ClassMethod GetAllPerson() As %Status
 {
     set status=$$$OK
     Try {
-        set %response.ContentType="application/json"
-        set %response.CharSet="utf8"
         set sql="SELECT JSON_OBJECT('Name':Name,'Email':Email ABSENT ON NULL) as json from Test.Person"
         set stmt=##class(%SQL.Statement).%New()
         set status=stmt.%Prepare(sql)
