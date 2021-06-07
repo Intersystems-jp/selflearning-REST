@@ -37,7 +37,7 @@ IRIS で REST サーバを作成する際に準備する REST ディスパッチ
 |:--|:--|:--|
 |[Test](/Test)||RESTディスパッチクラスやその他サンプルクラス定義含まれるディレクトリ|
 ||[Test.Person](/Test/Person.cls)|RESTディスパッチクラスからアクセスするTest.Personクラス（永続クラス＝テーブル）|
-||[Test.JSONTest](/Test/JSONTest.cls)|ビデオ：(2) [IRIS での JSON 操作]()の中で実行するJSON用SQL関数のサンプルコードを含んだクラス定義|
+||[Test.JSONTest](/Test/JSONTest.cls)|ビデオ：(2) [IRIS での JSON 操作](https://jp.community.intersystems.com/node/480106)の中で実行するJSON用SQL関数のサンプルコードを含んだクラス定義|
 ||[Test.VSCode.REST](/Test/VSCode/REST.cls)|(3) [手動によるディスパッチクラスの作成]（）で作成するRESTディスパッチクラスのサンプルコード|
 ||[crud2-sample.json](/crud2-sample.json)|(4) [API ファーストで作成するディスパッチクラス]（）で事前に準備するOpenAPI2.0に基づくアプリケーション定義例|
 ||[impl-sample.cls](/impl-sample.cls)|(4) [API ファーストで作成するディスパッチクラス]（）でロジックを記述するクラス（自動生成されるクラスにサンプルコードを記載したファイルです）|
