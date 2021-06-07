@@ -2,6 +2,12 @@
 Class Test.REST Extends %CSP.REST [ Language = objectscript ]
 {
 
+Parameter CONTENTTYPE = "application/json";
+
+Parameter CHARSET = "utf-8";
+
+Parameter CONVERTINPUTSTREAM = 1;
+
 XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 {
 <Routes>
@@ -18,10 +24,6 @@ ClassMethod GetAllPerson() As %Status
 {
     set status=$$$OK
     try {
-        //HTTP応答の準備
-        set %response.CharSet="utf8"
-        set %response.ContentType="application/json"
-
         //Person全件取得のためのコード
         set sql="select JSON_OBJECT('Name':Name,'Email':Email ABSENT ON NULL) as json from Test.Person"
         set stmt=##class(%SQL.Statement).%New()
@@ -46,17 +48,10 @@ ClassMethod CreatePerson() As %Status
 {
     set status=$$$OK
     try {
-        //HTTP応答の準備
-        set %response.CharSet="utf8"
-        set %response.ContentType="application/json"
-
-        //受信したメッセージボディ(JSON文字列)の取得
-        set data=$ZCONVERT(%request.Content.Read(),"I","UTF8")
-
         //JSON文字列からTest.Personのインスタンスへ変換
         set person=##class(Test.Person).%New()
-        set status=person.%JSONImport(data)
-        set status=person.%Save()
+        set status=person.%JSONImport(%request.Content.Read())
+        $$$ThrowOnError(person.%Save())
     }
     Catch ex {
         set status=ex.AsStatus()
@@ -69,9 +64,6 @@ ClassMethod GetPerson(id As %Integer) As %Status
 {
     set status=$$$OK
     try {
-        //HTTP応答の準備
-        set %response.CharSet="utf8"
-        set %response.ContentType="application/json"
         //指定IDのPersonをオープン
         set person=##class(Test.Person).%OpenId(id)
         do person.%JSONExport()
@@ -87,22 +79,12 @@ ClassMethod UpdatePerson(id As %Integer) As %Status
 {
     set status=$$$OK
     try {
-        //HTTP応答の準備
-        set %response.CharSet="utf8"
-        set %response.ContentType="application/json"
-
-        //ボディに指定されたJSONを取得
-        set data=$ZCONVERT(%request.Content.Read(),"I","UTF8")
         //変更対象のTest.Personをオープン
         set person=##class(Test.Person).%OpenId(id)
-        set status=person.%JSONImport(data)
-        TStart 
-        set status=person.%Save()
-        $$$THROWONERROR(ex,status)
-        TCommit 
+        set status=person.%JSONImport(%request.Content.Read())
+        $$$ThrowOnError(person.%Save())
     }
     catch ex {
-        TROllback
         set status=ex.AsStatus()
     }
     return status
@@ -113,16 +95,9 @@ ClassMethod DeletePerson(id As %Integer) As %Status
 {
     set status=$$$OK
     Try {
-        set %response.CharSet="utf8"
-        set %response.ContentType="application/json"
-        //1件削除
-        TStart 
-        set status=##class(Test.Person).%DeleteId(id)        
-        $$$THROWONERROR(ex,status)
-        TCommit 
+        $$$ThrowOnError(##class(Test.Person).%DeleteId(id)) 
     }
     Catch ex {
-        TROllback
         set status=ex.AsStatus()
     }
     Return status
