@@ -7,7 +7,7 @@ services:
     container_name: iris-fs-rest
     restart: always
     ports: 
-      - 51773
+      - 41773:1972
       - 42773:52773
       - 53773
     volumes:
