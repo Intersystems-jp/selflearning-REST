@@ -1,5 +1,6 @@
 Class Test.VSCode.REST Extends %CSP.REST
 {
+
 Parameter CONTENTTYPE = "application/json";
 
 Parameter CHARSET = "utf-8";
@@ -22,7 +23,7 @@ ClassMethod DeletePerson(id As %Integer) As %Status
 {
     set status=$$$OK
     Try {
-        set status=##class(Test.Person).%DeleteId(id)
+        $$$ThrowOnError(##class(Test.Person).%DeleteId(id))
 
     } Catch ex {
         set status=ex.AsStatus()
@@ -38,7 +39,7 @@ ClassMethod UpdatePerson(id As %Integer) As %Status
     Try {
         set person=##class(Test.Person).%OpenId(id)
         set status=person.%JSONImport(%request.Content.Read())
-        set status=person.%Save()
+        $$$ThrowOnError(person.%Save())
 
     } Catch ex {
         set status=ex.AsStatus()
@@ -69,7 +70,7 @@ ClassMethod CreatePerson() As %Status
     Try {
         set person=##class(Test.Person).%New()
         set status=person.%JSONImport(%request.Content.Read())
-        set status=person.%Save()
+        $$$ThrowOnError(person.%Save())
     } Catch ex {
         set status=ex.AsStatus()
     }
