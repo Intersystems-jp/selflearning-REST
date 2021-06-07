@@ -90,7 +90,7 @@ http://localhost:ポート番号/api/mgmnt/v2/<ネームスペース名>/<ベー
 例）ネームスペース：USER、ベースURL：/crud2、IRISのWebサーバポート：42773　とした場合のURLは以下の通りです。
 http://localhost:42773/api/mgmnt/v2/user/crud2
 
-実行後自動生成される crud2.impl クラスを VSCode にエクスポートしてから、コードを追記します（設定詳細はビデオ：[API ファーストで作成するディスパッチクラス]（https://youtu.be/SwquEq1fjTk）13:23 ～をご参照ください）。
+実行後自動生成される crud2.impl クラスを VSCode にエクスポートしてから、コードを追記します（設定詳細はビデオ：[API ファーストで作成するディスパッチクラス](https://youtu.be/SwquEq1fjTk)13:23 ～をご参照ください）。
 
 crud2.implクラスのサンプルは [impl-sample.cls](/impl-sample.cls) です。
 また、ベースURL /crud2 に対して設定するディスパッチクラスは crud2.disp です（管理ポータルのウェブ・アプリケーションの画面で設定します）。
