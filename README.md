@@ -1,24 +1,31 @@
 # InterSystems IRIS で REST サーバを作ってみよう！
 このGitでは、InterSystems IRIS で作成する REST サーバに必要なディスパッチクラスのサンプルを含んだコンテナを提供しています。
-コンテナは、[InterSystems IRIS Community Editionのイメージ](https://hub.docker.com/_/intersystems-iris-data-platform)を使用しています（Pullできない場合はイメージ、タグ名ごご確認いただき、[Dockerfile](/Dockerfile) の IMAGE 変数を書き換えてから実行してください）。
 
-## Gitのサンプルコードは、[InterSystems 開発者コミュニティ](https://jp.community.intersystems.com)に公開しているビデオのサンプルコードです。
+>IRIS のコンテナ取得方法詳細については [InterSystems Container Registryのご紹介](https://jp.community.intersystems.com/node/496571) に詳細説明があります。ぜひご参照ください。
 
-(1) [InterSystems IRIS で作成する　REST サーバの仕組みについて](https://jp.community.intersystems.com/post/%E3%80%90%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEintersystems-iris%E3%80%91%E3%82%BB%E3%83%AB%E3%83%95%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%93%E3%83%87%E3%82%AA%EF%BC%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E7%B7%A8%EF%BC%9Airis-%E3%81%A7%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B-rest-%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF)
 
-(2) [IRIS での JSON 操作]
+## サンプルコードについて
+**この Git のサンプルコードは、[InterSystems 開発者コミュニティ](https://jp.community.intersystems.com)に公開している以下記事のサンプルコードです**
 
-～現在編集中～
+(1) [InterSystems IRIS で作成する　REST サーバの仕組みについて](https://jp.community.intersystems.com/node/479546)
+
+IRIS で作成する REST サーバの仕組みを解説します。
+
+(2) [IRIS での JSON 操作](https://jp.community.intersystems.com/node/480106)
+
 IRIS サーバ側でのJSON操作に使用するダイナミックオブジェクト、SQL関数、%JSON.Adapterクラスの使い方を解説します。
 
-(3) [手動によるディスパッチクラスの作成](https://jp.community.intersystems.com/post/%E3%80%90%E3%81%AF%E3%81%98%E3%82%81%E3%81%A6%E3%81%AEintersystems-iris%E3%80%91%E3%82%BB%E3%83%AB%E3%83%95%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%93%E3%83%87%E3%82%AA%EF%BC%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E7%B7%A8%EF%BC%9A%EF%BC%88rest%EF%BC%89%E6%89%8B%E5%8B%95%E3%81%A7%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E3%83%87%E3%82%A3%E3%82%B9%E3%83%91%E3%83%83%E3%83%81%E3%82%AF%E3%83%A9%E3%82%B9)
+(3) [手動によるディスパッチクラスの作成](https://jp.community.intersystems.com/node/479551)
 
-(4) [API ファーストで作成するディスパッチクラス]
+IRIS で REST サーバを作成する際に準備する REST ディスパッチクラスを手動で作成する方法を解説します。
 
-～現在編集中～
+(4) [API ファーストで作成するディスパッチクラス](https://jp.community.intersystems.com/node/479596)
+
 アプリケーションの仕様を Open API 2.0 に基づいて先に定義し、定義内容からRESTディスパッチクラスの開発に必要なクラスを自動生成する方法を解説します（実装用クラスには、スタブメソッドが用意されます）。
 
-## その他のビデオ
+
+## その他のビデオについて
+
 関連ビデオの他に、IRISの基本操作についてを解説する「はじめてInterSystems IRIS」セルフラーニングビデオを [InterSystems 開発者コミュニティ](https://jp.community.intersystems.com)の [beginnerタグ](https://jp.community.intersystems.com/tags/beginner) にご用意しています。ぜひご参照ください。
 
 
@@ -83,13 +90,7 @@ http://localhost:ポート番号/api/mgmnt/v2/<ネームスペース名>/<ベー
 例）ネームスペース：USER、ベースURL：/crud2、IRISのWebサーバポート：42773　とした場合のURLは以下の通りです。
 http://localhost:42773/api/mgmnt/v2/user/crud2
 
-実行後自動生成される　crud2.impl クラスを VSCode にエクスポートしてから、コードを追記します（設定詳細はビデオ：[API ファーストで作成するディスパッチクラス]（）xx:ss ～をご参照ください）。
+実行後自動生成される crud2.impl クラスを VSCode にエクスポートしてから、コードを追記します（設定詳細はビデオ：[API ファーストで作成するディスパッチクラス]（https://youtu.be/SwquEq1fjTk）13:23 ～をご参照ください）。
 
 crud2.implクラスのサンプルは [impl-sample.cls](/impl-sample.cls) です。
 また、ベースURL /crud2 に対して設定するディスパッチクラスは crud2.disp です（管理ポータルのウェブ・アプリケーションの画面で設定します）。
-
-
-
-
-
-
